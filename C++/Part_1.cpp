@@ -20,9 +20,9 @@ int gcd (int a, int b) {
             mult2.push_back(i);
     }
 
-    // Linearly search for GCD
-    for (auto i : mult1) {
-        for (auto j : mult2) {
+    // Brute force GCD
+    for (auto &i : mult1) {
+        for (auto &j : mult2) {
             if (j == i) {
                 return j;
             }
@@ -81,7 +81,7 @@ void No18() {
     numStr = to_string(num);
     power = numStr.length();
 
-    for (auto c : numStr) {
+    for (auto &c : numStr) {
         sum += pow(c - '0', power);
     }
 
@@ -95,21 +95,24 @@ void No17() {
     cout << "No. 17: Palindrome?" << endl;
 
     stack<char> palinChar;
-    string input, inputLower = "";
+    int input;
     bool isPalin = true;
 
-    cout << "Enter a single word: ";
+    cout << "Enter a number: ";
     cin >> input;
 
-    for (auto c : input)
+    string inputStr = to_string(input), inputLower;
+
+    for (int i = 0; char &c = inputStr[i]; i++) {
         inputLower += tolower(c);
+    }
 
-    int half = input.length() % 2 == 0 ? input.length() / 2 : input.length() / 2 + 1;
+    int half = inputStr.length() % 2 == 0 ? inputStr.length() / 2 : inputStr.length() / 2 + 1;
 
-    for (int i = 0; i < input.length() / 2; i++) {
+    for (int i = 0; i < inputStr.length() / 2; i++) {
         palinChar.push(inputLower.at(i));
     }
-    for (int i = half; i < input.length(); i++) {
+    for (int i = half; i < inputStr.length(); i++) {
         if (inputLower.at(i) != palinChar.top()) {
             isPalin = false;
             break;
@@ -224,7 +227,7 @@ void No12() {
     cout << "Enter a string: ";
     getline(cin, input);
 
-    for (auto c : input) {
+    for (auto &c : input) {
         if (isspace(c)) continue;
         cout << c;
     }
@@ -243,7 +246,7 @@ void No11() {
     cout << "Enter a string: ";
     getline(cin, input);
 
-    for (auto c : input) {
+    for (auto &c : input) {
         if(!isalpha(c)) continue;
         cout << c;
     }
@@ -262,7 +265,7 @@ void No10() {
     cout << "Enter a string: ";
     getline(cin, input);
 
-    for (auto c : input) {
+    for (auto &c : input) {
         char lower_c = tolower(c);
         if (lower_c == 'a' || lower_c == 'e' || lower_c == 'i' ||
             lower_c == 'o' || lower_c == 'u' || lower_c == 'y')
@@ -285,7 +288,7 @@ void No9() {
     cout << "Enter a string: ";
     getline(cin, input);
 
-    for (auto c : input) {
+    for (auto &c : input) {
         char lower_c = tolower(c);
         if (lower_c == 'a' || lower_c == 'e' || lower_c == 'i' ||
             lower_c == 'o' || lower_c == 'u' || lower_c == 'y')
@@ -306,7 +309,7 @@ void No8() {
     cout << "Enter a string: ";
     getline(cin, input);
     
-    for (auto c : input) {
+    for (auto &c : input) {
         cout << (char)(isupper(c) ? tolower(c) : toupper(c));
     }
 
@@ -354,8 +357,8 @@ void No5() {
     cout << "Enter a character: ";
     cin >> input;
 
-    for (auto i : vowels) {
-        if (input == i) {
+    for (auto &c : vowels) {
+        if (input == c) {
             isVowel = true;
             break;
         }
@@ -425,6 +428,6 @@ void No1() {
 }
 
 int main() {
-    No1();
+    No17();
     return 0;
 }
