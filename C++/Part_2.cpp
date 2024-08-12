@@ -15,7 +15,7 @@ void No30() {       // Copy paste No 28, edited reverse
     stack<string> layer;
 
     while (size < 0) {
-        cout << "Enter the size (# layers) of the diamond: ";
+        cout << "Enter the size (# layers) of the hourglass: ";
         cin >> size;
 
         if (size < 0)
